@@ -11,7 +11,7 @@ flowchart LR
   LSIP --> LK[LiveKit server]
   LK --> W[genai-agents-worker]
   W -->|gRPC| ASR[genai-tone-stt]
-  W -->|gRPC| B[genai-agents-backend]
+  W -->|gRPC| B[genai-agents]
   W -->|HTTP| LLM[LLM / TTS]
   B --> DB[(PostgreSQL / MinIO / Dragonfly)]
 ```
@@ -21,7 +21,7 @@ flowchart LR
 **`genai-agents-worker`** — ведёт звонок: распознавание → LLM → синтез, сценарий открытия,
 инструменты, запись, метрики.
 
-**`genai-agents-backend`** — конфиг агентов, провайдеров и кампаний, приём результатов звонков,
+**`genai-agents`** — конфиг агентов, провайдеров и кампаний, приём результатов звонков,
 LLM-анализ и скоринг, отчёты и веб-интерфейс.
 
 **`genai-tone-stt`** — ASR по gRPC, несколько реплик за воркерами.
